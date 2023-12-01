@@ -7,7 +7,7 @@ trigger:
 - '*'
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: ubuntu-latest
 
 variables:
   buildConfiguration: 'Release'
@@ -23,7 +23,10 @@ steps:
   displayName: 'Run npm install'
   inputs:
     verbose: false
-
+- script: 'npm install'
+  displayName: 'Install Node.js dependencies'
+  workingDirectory: Tailspin.SpaceGame.Web
+  
 - script: './node_modules/.bin/node-sass Tailspin.SpaceGame.Web/wwwroot --output Tailspin.SpaceGame.Web/wwwroot'
   displayName: 'Compile Sass assets'
 
